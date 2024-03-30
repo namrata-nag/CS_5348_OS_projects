@@ -1,0 +1,167 @@
+1. Why are there missing keys with 2 or more threads, but not with 1 thread? Identify a sequence of events that can lead to keys missing for 2 threads.
+
+Initially, we store random numbers in the key array. To determine the table index, we extract the last two digits from each element in the key array. Subsequently, two threads are created, one handling elements in the 0-4999 index of the key array, and the other managing elements in the 5000-10000 index. As the last digits of the random numbers in these arrays may overlap, accessing the shared variable table can lead to unpredictable behavior. This unpredictability arises from the concurrent nature of the threads and the shared nature of the table. For instance, such an event could occur if thread 1 executes first and both thread 1 and thread 2 encounter the situation where i = 22.
+
+Thread1                                   
+
+n= null 
+p pointing to address of table[22]
+Let e = 0x1111
+E->key = 22; e->value = random_value; 
+e->next = n (which is null); 
+Context switch
+
+Thread2
+
+n = null
+p pointing to address of table[22]
+Let e = 0x2222
+E->key = 22; 
+e->value = random_value; 
+e->next = n (which is null); 
+*p = e;
+
+
+Thread 1
+
+*p = e; 
+Thread 1 overrides the table[22] which is storing thread 2 value;
+
+
+#output of the code 
+1: get time = 0.358780
+1: 461 keys missing
+0: get time = 0.359845
+0: 447 keys missing
+completion time = 0.367981
+
+
+2.Is the two-threaded version faster than the single-threaded version?
+
+Upon implementing the locks, the issue of missing keys has been resolved. Despite the absence of missing keys, it is noticeable that the single-thread version performs faster compared to the two-thread version. Here,I applied separate locks around the get and put function calls. It is plausible that the observed performance difference stems from the overhead associated with context-switching and the potentially unnecessary use of locks surrounding the get function.
+
+#Inside the thread function 
+# lock_put is initialized in the main function - pthread_mutex_init(&lock_put, NULL);
+
+for (i = 0; i < b; i++)
+{
+        pthread_mutex_lock(&lock_put);
+        put(keys[b * n + i], n);
+        pthread_mutex_unlock(&lock_put);
+}
+
+# lock_get is initialized in the main function - pthread_mutex_init(&lock_get, NULL);
+
+for (i = 0; i < b; i++)
+{
+        pthread_mutex_lock(&lock_get);
+        struct entry *e = get(keys[n * b + i]);
+        pthread_mutex_unlock(&lock_get);
+
+        if (e == 0)
+            k++;
+}
+
+# output of above code
+
+0: get time = 0.907336
+0: 0 keys missing
+1: get time = 0.907429
+1: 0 keys missing
+completion time = 0.933826
+
+3. What do you observe? 
+
+Eliminating the unnecessary lock around the get call results in improved performance for the two-thread program. Furthermore, to enable parallel execution for the put operation, an array of mutexes corresponding to the table length can be employed. This approach allows for the simultaneous handling of two distinct indices, facilitating effective parallel processing. However this does not change the total completion time significantly.The code and output for the same is below -
+
+# Output after removing the lock around get function
+
+0: get time = 0.324367
+0: 0 keys missing
+1: get time = 0.374218
+1: 0 keys missing
+completion time = 0.400047
+
+
+
+# initialized array of mutex 
+
+for (int z = 0; z < NBUCKET; z++)
+{
+    pthread_mutex_init(&lock_array[z], NULL);
+       
+}
+
+# implement lock in put function call
+
+static void put(int key, int value)
+{
+    int i = key % NBUCKET;
+    pthread_mutex_lock(&lock[i]);
+    insert(key, value, &table[i], table[i]);
+    pthread_mutex_unlock(&lock[i]);
+
+}
+
+# output of the above code
+
+0: get time = 0.345299
+0: 0 keys missing
+1: get time = 0.346502
+1: 0 keys missing
+completion time = 0.361201
+
+
+
+4. What do you infer when you repeat the above experiments for more than 2 threads (say, 10 or more?)
+
+As we increase the number of thread the time of execution decreases. However, if we increase the thread after a certain threshold the execution time starts increasing again this is due to the overhead of context switching.
+
+# output for 20 threads
+
+9: get time = 0.055067
+9: 0 keys missing
+14: get time = 0.077737
+14: 0 keys missing
+2: get time = 0.080721
+2: 0 keys missing
+18: get time = 0.096141
+18: 0 keys missing
+10: get time = 0.095104
+10: 0 keys missing
+15: get time = 0.086607
+15: 0 keys missing
+19: get time = 0.097396
+19: 0 keys missing
+0: get time = 0.099068
+0: 0 keys missing
+16: get time = 0.095721
+16: 0 keys missing
+1: get time = 0.112823
+1: 0 keys missing
+8: get time = 0.106923
+8: 0 keys missing
+5: get time = 0.102049
+5: 0 keys missing
+4: get time = 0.115840
+4: 0 keys missing
+13: get time = 0.116820
+13: 0 keys missing
+11: get time = 0.113755
+11: 0 keys missing
+3: get time = 0.109816
+3: 0 keys missing
+12: get time = 0.106351
+12: 0 keys missing
+7: get time = 0.120311
+7: 0 keys missing
+6: get time = 0.121017
+6: 0 keys missing
+17: get time = 0.131406
+17: 0 keys missing
+completion time = 0.169140
+
+# output for 300 threads
+
+completion time = 0.481421
+

@@ -1,0 +1,36 @@
+S: Student 0 takes a seat. Empty chairs = 3
+C: Student 0 with priority 1 added to the queue. Waiting students now = 1. Total requests = 1 
+C: Student 2 with priority 2 added to the queue. Waiting students now = 0. Total requests = 2 
+S: Student 2 takes a seat. Empty chairs = 2
+T: Student 0 tutored by Tutor 6. Students tutored now = 2. Total sessions tutored = 1
+S: Student 0 received help from Tutor 6.
+T: Student 2 tutored by Tutor 6. Students tutored now = 1. Total sessions tutored = 2
+S: Student 2 received help from Tutor 6.
+S: Student 0 takes a seat. Empty chairs = 3
+S: Student 1 takes a seat. Empty chairs = 2
+S: Student 2 takes a seat. Empty chairs = 1
+C: Student 0 with priority 3 added to the queue. Waiting students now = 3. Total requests = 5 
+C: Student 1 with priority 4 added to the queue. Waiting students now = 2. Total requests = 5 
+C: Student 2 with priority 5 added to the queue. Waiting students now = 1. Total requests = 5 
+T: Student 0 tutored by Tutor 1. Students tutored now = 3. Total sessions tutored = 3
+S: Student 0 received help from Tutor 1.
+T: Student 2 tutored by Tutor 1. Students tutored now = 2. Total sessions tutored = 4
+S: Student 0 takes a seat. Empty chairs = 1
+S: Student 2 received help from Tutor 1.
+T: Student 1 tutored by Tutor 1. Students tutored now = 1. Total sessions tutored = 5
+S: Student 2 takes a seat. Empty chairs = 1
+S: Student 1 received help from Tutor 1.
+S: Student 1 takes a seat. Empty chairs = 1
+C: Student 0 with priority 6 added to the queue. Waiting students now = 3. Total requests = 8 
+C: Student 1 with priority 8 added to the queue. Waiting students now = 2. Total requests = 8 
+C: Student 2 with priority 7 added to the queue. Waiting students now = 1. Total requests = 8 
+T: Student 0 tutored by Tutor 4. Students tutored now = 3. Total sessions tutored = 6
+S: Student 0 received help from Tutor 4.
+T: Student 2 tutored by Tutor 4. Students tutored now = 2. Total sessions tutored = 7
+S: Student 2 received help from Tutor 4.
+T: Student 1 tutored by Tutor 4. Students tutored now = 1. Total sessions tutored = 8
+S: Student 1 received help from Tutor 4.
+S: Student 1 takes a seat. Empty chairs = 3
+C: Student 1 with priority 9 added to the queue. Waiting students now = 1. Total requests = 9 
+T: Student 1 tutored by Tutor 3. Students tutored now = 1. Total sessions tutored = 9
+S: Student 1 received help from Tutor 3.

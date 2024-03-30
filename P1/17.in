@@ -1,0 +1,3 @@
+path /jos/cs5348-xv6/src/testcases/P1/ /usr/bin/
+cd test & myls  & pwd &
+exit

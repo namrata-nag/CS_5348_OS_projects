@@ -1,0 +1,795 @@
+starting build
+
+**********************************************************************
+
+Test build
+build project using make
+
+**********************************************************************
+rm -f fcheck
+gcc fcheck.c -o fcheck -Wall -O -std=gnu99
+fcheck.c: In function 'check_inode':
+fcheck.c:187:7: warning: unused variable 'bitblock' [-Wunused-variable]
+   int bitblock, i, j, z;
+       ^
+fcheck.c: In function 'main':
+fcheck.c:397:9: warning: unused variable 'bitmapblock' [-Wunused-variable]
+   char *bitmapblock = (char *)dip + sb->ninodes * BLOCK_SIZE;
+         ^
+fcheck.c:362:18: warning: unused variable 'de' [-Wunused-variable]
+   struct dirent *de;
+                  ^
+fcheck.c:360:9: warning: variable 'dip2' set but not used [-Wunused-but-set-variable]
+   char *dip2;
+         ^
+fcheck.c:357:13: warning: unused variable 'n' [-Wunused-variable]
+   int r, i, n, fsfd;
+             ^
+fcheck.c:357:10: warning: unused variable 'i' [-Wunused-variable]
+   int r, i, n, fsfd;
+          ^
+fcheck.c:357:7: warning: unused variable 'r' [-Wunused-variable]
+   int r, i, n, fsfd;
+       ^
+
+
+test build PASSED
+ (build project using make)
+
+starting good
+
+**********************************************************************
+
+Test good
+Run on a good file system
+
+**********************************************************************
+/tmp/tmpwX996I/p/./fcheck /cs4348-xv6/ta/all_tests/p5/images/good
+
+
+test good PASSED (5 of 5)
+ (Run on a good file system)
+
+starting goodlarge
+
+**********************************************************************
+
+Test goodlarge
+Run on large good file system
+
+**********************************************************************
+/tmp/tmpwX996I/p/./fcheck /cs4348-xv6/ta/all_tests/p5/images/goodlarge
+
+
+test goodlarge PASSED (5 of 5)
+ (Run on large good file system)
+
+starting goodrefcnt
+
+**********************************************************************
+
+Test goodrefcnt
+Run on a file system with only good file reference counts
+
+**********************************************************************
+/tmp/tmpwX996I/p/./fcheck /cs4348-xv6/ta/all_tests/p5/images/goodrefcnt
+
+
+test goodrefcnt PASSED (5 of 5)
+ (Run on a file system with only good file reference counts)
+
+starting goodlink
+
+**********************************************************************
+
+Test goodlink
+Run on a file system with only good directory link counts
+
+**********************************************************************
+/tmp/tmpwX996I/p/./fcheck /cs4348-xv6/ta/all_tests/p5/images/goodlink
+
+
+test goodlink PASSED (5 of 5)
+ (Run on a file system with only good directory link counts)
+
+starting goodrm
+
+**********************************************************************
+
+Test goodrm
+Run on a good file system having some files removed
+
+**********************************************************************
+/tmp/tmpwX996I/p/./fcheck /cs4348-xv6/ta/all_tests/p5/images/goodrm
+
+
+test goodrm PASSED (5 of 5)
+ (Run on a good file system having some files removed)
+
+starting nonexistant
+
+**********************************************************************
+
+Test nonexistant
+Run on a nonexistant file system
+
+**********************************************************************
+/tmp/tmpwX996I/p/./fcheck /cs4348-xv6/ta/all_tests/p5/images/nonexistant
+Failure: ./fcheck gave incorrect standard error.
+Expected: "image not found.\n"
+Got:      "/cs4348-xv6/ta/all_tests/p5/images/nonexistant: No such file or directory\n"
+
+
+test nonexistant FAILED (0 of 5)
+ (Run on a nonexistant file system)
+ ./fcheck gave incorrect standard error.
+
+ Test it yourself by running
+ fcheck /cs4348-xv6/ta/all_tests/p5/images/nonexistant
+ and check out the test folder
+ /cs4348-xv6/ta/all_tests/p5/err/nonexistant
+ to compare your error output with reference outputs. 
+
+starting badroot
+
+**********************************************************************
+
+Test badroot
+Run on a file system with a root directory in bad location
+
+**********************************************************************
+/tmp/tmpwX996I/p/./fcheck /cs4348-xv6/ta/all_tests/p5/images/badroot
+ERROR: root directory does not exist.
+Failure: ./fcheck gave incorrect standard error.
+Expected: "ERROR: root directory does not exist.\n"
+Got:      ""
+
+
+test badroot FAILED (0 of 5)
+ (Run on a file system with a root directory in bad location)
+ ./fcheck gave incorrect standard error.
+
+ Test it yourself by running
+ fcheck /cs4348-xv6/ta/all_tests/p5/images/badroot
+ and check out the test folder
+ /cs4348-xv6/ta/all_tests/p5/err/badroot
+ to compare your error output with reference outputs. 
+
+starting badinode
+
+**********************************************************************
+
+Test badinode
+Run on a file system with a bad type in an inode
+
+**********************************************************************
+/tmp/tmpwX996I/p/./fcheck /cs4348-xv6/ta/all_tests/p5/images/badinode
+ERROR: bad inode.
+Failure: ./fcheck gave incorrect standard error.
+Expected: "ERROR: bad inode.\n"
+Got:      ""
+
+
+test badinode FAILED (0 of 5)
+ (Run on a file system with a bad type in an inode)
+ ./fcheck gave incorrect standard error.
+
+ Test it yourself by running
+ fcheck /cs4348-xv6/ta/all_tests/p5/images/badinode
+ and check out the test folder
+ /cs4348-xv6/ta/all_tests/p5/err/badinode
+ to compare your error output with reference outputs. 
+
+starting badaddr
+
+**********************************************************************
+
+Test badaddr
+Run on a file system with a bad direct address in an inode
+
+**********************************************************************
+/tmp/tmpwX996I/p/./fcheck /cs4348-xv6/ta/all_tests/p5/images/badaddr
+ERROR: bad direct address in inode.
+Failure: ./fcheck gave incorrect standard error.
+Expected: "ERROR: bad direct address in inode.\n"
+Got:      ""
+
+
+test badaddr FAILED (0 of 5)
+ (Run on a file system with a bad direct address in an inode)
+ ./fcheck gave incorrect standard error.
+
+ Test it yourself by running
+ fcheck /cs4348-xv6/ta/all_tests/p5/images/badaddr
+ and check out the test folder
+ /cs4348-xv6/ta/all_tests/p5/err/badaddr
+ to compare your error output with reference outputs. 
+
+starting badindir1
+
+**********************************************************************
+
+Test badindir1
+Run on a file system with a bad indirect address in an inode
+
+**********************************************************************
+/tmp/tmpwX996I/p/./fcheck /cs4348-xv6/ta/all_tests/p5/images/badindir1
+ERROR: bad indirect address in inode.
+Failure: ./fcheck gave incorrect standard error.
+Expected: "ERROR: bad indirect address in inode.\n"
+Got:      ""
+
+
+test badindir1 FAILED (0 of 5)
+ (Run on a file system with a bad indirect address in an inode)
+ ./fcheck gave incorrect standard error.
+
+ Test it yourself by running
+ fcheck /cs4348-xv6/ta/all_tests/p5/images/badindir1
+ and check out the test folder
+ /cs4348-xv6/ta/all_tests/p5/err/badindir1
+ to compare your error output with reference outputs. 
+
+starting badroot2
+
+**********************************************************************
+
+Test badroot2
+Run on a file system with a bad root directory in good location
+
+**********************************************************************
+/tmp/tmpwX996I/p/./fcheck /cs4348-xv6/ta/all_tests/p5/images/badroot2
+ERROR: root directory does not exist.
+Failure: ./fcheck gave incorrect standard error.
+Expected: "ERROR: root directory does not exist.\n"
+Got:      ""
+
+
+test badroot2 FAILED (0 of 5)
+ (Run on a file system with a bad root directory in good location)
+ ./fcheck gave incorrect standard error.
+
+ Test it yourself by running
+ fcheck /cs4348-xv6/ta/all_tests/p5/images/badroot2
+ and check out the test folder
+ /cs4348-xv6/ta/all_tests/p5/err/badroot2
+ to compare your error output with reference outputs. 
+
+starting badfmt
+
+**********************************************************************
+
+Test badfmt
+Run on a file system without . or .. directories
+
+**********************************************************************
+/tmp/tmpwX996I/p/./fcheck /cs4348-xv6/ta/all_tests/p5/images/badfmt
+ERROR: directory not properly formatted.
+Failure: ./fcheck gave incorrect standard error.
+Expected: "ERROR: directory not properly formatted.\n"
+Got:      ""
+
+
+test badfmt FAILED (0 of 5)
+ (Run on a file system without . or .. directories)
+ ./fcheck gave incorrect standard error.
+
+ Test it yourself by running
+ fcheck /cs4348-xv6/ta/all_tests/p5/images/badfmt
+ and check out the test folder
+ /cs4348-xv6/ta/all_tests/p5/err/badfmt
+ to compare your error output with reference outputs. 
+
+starting mrkfree
+
+**********************************************************************
+
+Test mrkfree
+Run on a file system with an inuse direct block marked free
+
+**********************************************************************
+/tmp/tmpwX996I/p/./fcheck /cs4348-xv6/ta/all_tests/p5/images/mrkfree
+ERROR: address used by inode but marked free in bitmap.
+Failure: ./fcheck gave incorrect standard error.
+Expected: "ERROR: address used by inode but marked free in bitmap.\n"
+Got:      ""
+
+
+test mrkfree FAILED (0 of 5)
+ (Run on a file system with an inuse direct block marked free)
+ ./fcheck gave incorrect standard error.
+
+ Test it yourself by running
+ fcheck /cs4348-xv6/ta/all_tests/p5/images/mrkfree
+ and check out the test folder
+ /cs4348-xv6/ta/all_tests/p5/err/mrkfree
+ to compare your error output with reference outputs. 
+
+starting indirfree
+
+**********************************************************************
+
+Test indirfree
+Run on a file system with an inuse indirect block marked free
+
+**********************************************************************
+/tmp/tmpwX996I/p/./fcheck /cs4348-xv6/ta/all_tests/p5/images/indirfree
+ERROR: address used by inode but marked free in bitmap.
+Failure: ./fcheck gave incorrect standard error.
+Expected: "ERROR: address used by inode but marked free in bitmap.\n"
+Got:      ""
+
+
+test indirfree FAILED (0 of 5)
+ (Run on a file system with an inuse indirect block marked free)
+ ./fcheck gave incorrect standard error.
+
+ Test it yourself by running
+ fcheck /cs4348-xv6/ta/all_tests/p5/images/indirfree
+ and check out the test folder
+ /cs4348-xv6/ta/all_tests/p5/err/indirfree
+ to compare your error output with reference outputs. 
+
+starting mrkused
+
+**********************************************************************
+
+Test mrkused
+Run on a file system with a free block marked used
+
+**********************************************************************
+/tmp/tmpwX996I/p/./fcheck /cs4348-xv6/ta/all_tests/p5/images/mrkused
+ERROR: bitmap marks block in use but it is not in use.
+Failure: ./fcheck gave incorrect standard error.
+Expected: "ERROR: bitmap marks block in use but it is not in use.\n"
+Got:      ""
+
+
+test mrkused FAILED (0 of 5)
+ (Run on a file system with a free block marked used)
+ ./fcheck gave incorrect standard error.
+
+ Test it yourself by running
+ fcheck /cs4348-xv6/ta/all_tests/p5/images/mrkused
+ and check out the test folder
+ /cs4348-xv6/ta/all_tests/p5/err/mrkused
+ to compare your error output with reference outputs. 
+
+starting addronce
+
+**********************************************************************
+
+Test addronce
+Run on a file system with a direct address used more than once
+
+**********************************************************************
+/tmp/tmpwX996I/p/./fcheck /cs4348-xv6/ta/all_tests/p5/images/addronce
+ERROR: direct address used more than once.
+Failure: ./fcheck gave incorrect standard error.
+Expected: "ERROR: direct address used more than once.\n"
+Got:      ""
+
+
+test addronce FAILED (0 of 5)
+ (Run on a file system with a direct address used more than once)
+ ./fcheck gave incorrect standard error.
+
+ Test it yourself by running
+ fcheck /cs4348-xv6/ta/all_tests/p5/images/addronce
+ and check out the test folder
+ /cs4348-xv6/ta/all_tests/p5/err/addronce
+ to compare your error output with reference outputs. 
+
+starting addronce2
+
+**********************************************************************
+
+Test addronce2
+Run on a file system with an indirect address used more than once
+
+**********************************************************************
+/tmp/tmpwX996I/p/./fcheck /cs4348-xv6/ta/all_tests/p5/images/addronce2
+ERROR: indirect address used more than once.
+Failure: ./fcheck gave incorrect standard error.
+Expected: "ERROR: indirect address used more than once.\n"
+Got:      ""
+
+
+test addronce2 FAILED (0 of 5)
+ (Run on a file system with an indirect address used more than once)
+ ./fcheck gave incorrect standard error.
+
+ Test it yourself by running
+ fcheck /cs4348-xv6/ta/all_tests/p5/images/addronce2
+ and check out the test folder
+ /cs4348-xv6/ta/all_tests/p5/err/addronce2
+ to compare your error output with reference outputs. 
+
+starting imrkused
+
+**********************************************************************
+
+Test imrkused
+Run on a file system with inode marked used, but not referenced in a directory
+
+**********************************************************************
+/tmp/tmpwX996I/p/./fcheck /cs4348-xv6/ta/all_tests/p5/images/imrkused
+ERROR: inode marked use but not found in a directory.
+Failure: ./fcheck gave incorrect standard error.
+Expected: "ERROR: inode marked use but not found in a directory.\n"
+Got:      ""
+
+
+test imrkused FAILED (0 of 5)
+ (Run on a file system with inode marked used, but not referenced in a directory)
+ ./fcheck gave incorrect standard error.
+
+ Test it yourself by running
+ fcheck /cs4348-xv6/ta/all_tests/p5/images/imrkused
+ and check out the test folder
+ /cs4348-xv6/ta/all_tests/p5/err/imrkused
+ to compare your error output with reference outputs. 
+
+starting imrkfree
+
+**********************************************************************
+
+Test imrkfree
+Run on a file system with inode marked free, but referenced in a directory
+
+**********************************************************************
+/tmp/tmpwX996I/p/./fcheck /cs4348-xv6/ta/all_tests/p5/images/imrkfree
+ERROR: inode referred to in directory but marked free.
+Failure: ./fcheck gave incorrect standard error.
+Expected: "ERROR: inode referred to in directory but marked free.\n"
+Got:      ""
+
+
+test imrkfree FAILED (0 of 5)
+ (Run on a file system with inode marked free, but referenced in a directory)
+ ./fcheck gave incorrect standard error.
+
+ Test it yourself by running
+ fcheck /cs4348-xv6/ta/all_tests/p5/images/imrkfree
+ and check out the test folder
+ /cs4348-xv6/ta/all_tests/p5/err/imrkfree
+ to compare your error output with reference outputs. 
+
+starting badrefcnt
+
+**********************************************************************
+
+Test badrefcnt
+Run on a file system which has an inode that is referenced less than its reference count
+
+**********************************************************************
+/tmp/tmpwX996I/p/./fcheck /cs4348-xv6/ta/all_tests/p5/images/badrefcnt
+ERROR: bad reference count for file.
+Failure: ./fcheck gave incorrect standard error.
+Expected: "ERROR: bad reference count for file.\n"
+Got:      ""
+
+
+test badrefcnt FAILED (0 of 5)
+ (Run on a file system which has an inode that is referenced less than its reference count)
+ ./fcheck gave incorrect standard error.
+
+ Test it yourself by running
+ fcheck /cs4348-xv6/ta/all_tests/p5/images/badrefcnt
+ and check out the test folder
+ /cs4348-xv6/ta/all_tests/p5/err/badrefcnt
+ to compare your error output with reference outputs. 
+
+starting badrefcnt2
+
+**********************************************************************
+
+Test badrefcnt2
+Run on a file system which has an inode that is referenced more than its reference count
+
+**********************************************************************
+/tmp/tmpwX996I/p/./fcheck /cs4348-xv6/ta/all_tests/p5/images/badrefcnt2
+ERROR: bad reference count for file.
+Failure: ./fcheck gave incorrect standard error.
+Expected: "ERROR: bad reference count for file.\n"
+Got:      ""
+
+
+test badrefcnt2 FAILED (0 of 5)
+ (Run on a file system which has an inode that is referenced more than its reference count)
+ ./fcheck gave incorrect standard error.
+
+ Test it yourself by running
+ fcheck /cs4348-xv6/ta/all_tests/p5/images/badrefcnt2
+ and check out the test folder
+ /cs4348-xv6/ta/all_tests/p5/err/badrefcnt2
+ to compare your error output with reference outputs. 
+
+starting badindir2
+
+**********************************************************************
+
+Test badindir2
+Run on a file system with a bad indirect address in an inode
+
+**********************************************************************
+/tmp/tmpwX996I/p/./fcheck /cs4348-xv6/ta/all_tests/p5/images/badindir2
+ERROR: bad indirect address in inode.
+Failure: ./fcheck gave incorrect standard error.
+Expected: "ERROR: bad indirect address in inode.\n"
+Got:      ""
+
+
+test badindir2 FAILED (0 of 5)
+ (Run on a file system with a bad indirect address in an inode)
+ ./fcheck gave incorrect standard error.
+
+ Test it yourself by running
+ fcheck /cs4348-xv6/ta/all_tests/p5/images/badindir2
+ and check out the test folder
+ /cs4348-xv6/ta/all_tests/p5/err/badindir2
+ to compare your error output with reference outputs. 
+
+starting dironce
+
+**********************************************************************
+
+Test dironce
+Run on a file system with a directory appearing more than once
+
+**********************************************************************
+/tmp/tmpwX996I/p/./fcheck /cs4348-xv6/ta/all_tests/p5/images/dironce
+ERROR: directory appears more than once in file system.
+Failure: ./fcheck gave incorrect standard error.
+Expected: "ERROR: directory appears more than once in file system.\n"
+Got:      ""
+
+
+test dironce FAILED (0 of 5)
+ (Run on a file system with a directory appearing more than once)
+ ./fcheck gave incorrect standard error.
+
+ Test it yourself by running
+ fcheck /cs4348-xv6/ta/all_tests/p5/images/dironce
+ and check out the test folder
+ /cs4348-xv6/ta/all_tests/p5/err/dironce
+ to compare your error output with reference outputs. 
+
+starting badlarge
+
+**********************************************************************
+
+Test badlarge
+Run on a large file system with an indirect directory appearing more than once
+
+**********************************************************************
+/tmp/tmpwX996I/p/./fcheck /cs4348-xv6/ta/all_tests/p5/images/badlarge
+ERROR: directory appears more than once in file system.
+Failure: ./fcheck gave incorrect standard error.
+Expected: "ERROR: directory appears more than once in file system.\n"
+Got:      ""
+
+
+test badlarge FAILED (0 of 5)
+ (Run on a large file system with an indirect directory appearing more than once)
+ ./fcheck gave incorrect standard error.
+
+ Test it yourself by running
+ fcheck /cs4348-xv6/ta/all_tests/p5/images/badlarge
+ and check out the test folder
+ /cs4348-xv6/ta/all_tests/p5/err/badlarge
+ to compare your error output with reference outputs. 
+
+**********************************************************************
+Summary:
+test build PASSED
+ (build project using make)
+
+test good PASSED (5 of 5)
+ (Run on a good file system)
+
+test goodlarge PASSED (5 of 5)
+ (Run on large good file system)
+
+test goodrefcnt PASSED (5 of 5)
+ (Run on a file system with only good file reference counts)
+
+test goodlink PASSED (5 of 5)
+ (Run on a file system with only good directory link counts)
+
+test goodrm PASSED (5 of 5)
+ (Run on a good file system having some files removed)
+
+test nonexistant FAILED (0 of 5)
+ (Run on a nonexistant file system)
+ ./fcheck gave incorrect standard error.
+
+ Test it yourself by running
+ fcheck /cs4348-xv6/ta/all_tests/p5/images/nonexistant
+ and check out the test folder
+ /cs4348-xv6/ta/all_tests/p5/err/nonexistant
+ to compare your error output with reference outputs. 
+
+test badroot FAILED (0 of 5)
+ (Run on a file system with a root directory in bad location)
+ ./fcheck gave incorrect standard error.
+
+ Test it yourself by running
+ fcheck /cs4348-xv6/ta/all_tests/p5/images/badroot
+ and check out the test folder
+ /cs4348-xv6/ta/all_tests/p5/err/badroot
+ to compare your error output with reference outputs. 
+
+test badinode FAILED (0 of 5)
+ (Run on a file system with a bad type in an inode)
+ ./fcheck gave incorrect standard error.
+
+ Test it yourself by running
+ fcheck /cs4348-xv6/ta/all_tests/p5/images/badinode
+ and check out the test folder
+ /cs4348-xv6/ta/all_tests/p5/err/badinode
+ to compare your error output with reference outputs. 
+
+test badaddr FAILED (0 of 5)
+ (Run on a file system with a bad direct address in an inode)
+ ./fcheck gave incorrect standard error.
+
+ Test it yourself by running
+ fcheck /cs4348-xv6/ta/all_tests/p5/images/badaddr
+ and check out the test folder
+ /cs4348-xv6/ta/all_tests/p5/err/badaddr
+ to compare your error output with reference outputs. 
+
+test badindir1 FAILED (0 of 5)
+ (Run on a file system with a bad indirect address in an inode)
+ ./fcheck gave incorrect standard error.
+
+ Test it yourself by running
+ fcheck /cs4348-xv6/ta/all_tests/p5/images/badindir1
+ and check out the test folder
+ /cs4348-xv6/ta/all_tests/p5/err/badindir1
+ to compare your error output with reference outputs. 
+
+test badroot2 FAILED (0 of 5)
+ (Run on a file system with a bad root directory in good location)
+ ./fcheck gave incorrect standard error.
+
+ Test it yourself by running
+ fcheck /cs4348-xv6/ta/all_tests/p5/images/badroot2
+ and check out the test folder
+ /cs4348-xv6/ta/all_tests/p5/err/badroot2
+ to compare your error output with reference outputs. 
+
+test badfmt FAILED (0 of 5)
+ (Run on a file system without . or .. directories)
+ ./fcheck gave incorrect standard error.
+
+ Test it yourself by running
+ fcheck /cs4348-xv6/ta/all_tests/p5/images/badfmt
+ and check out the test folder
+ /cs4348-xv6/ta/all_tests/p5/err/badfmt
+ to compare your error output with reference outputs. 
+
+test mrkfree FAILED (0 of 5)
+ (Run on a file system with an inuse direct block marked free)
+ ./fcheck gave incorrect standard error.
+
+ Test it yourself by running
+ fcheck /cs4348-xv6/ta/all_tests/p5/images/mrkfree
+ and check out the test folder
+ /cs4348-xv6/ta/all_tests/p5/err/mrkfree
+ to compare your error output with reference outputs. 
+
+test indirfree FAILED (0 of 5)
+ (Run on a file system with an inuse indirect block marked free)
+ ./fcheck gave incorrect standard error.
+
+ Test it yourself by running
+ fcheck /cs4348-xv6/ta/all_tests/p5/images/indirfree
+ and check out the test folder
+ /cs4348-xv6/ta/all_tests/p5/err/indirfree
+ to compare your error output with reference outputs. 
+
+test mrkused FAILED (0 of 5)
+ (Run on a file system with a free block marked used)
+ ./fcheck gave incorrect standard error.
+
+ Test it yourself by running
+ fcheck /cs4348-xv6/ta/all_tests/p5/images/mrkused
+ and check out the test folder
+ /cs4348-xv6/ta/all_tests/p5/err/mrkused
+ to compare your error output with reference outputs. 
+
+test addronce FAILED (0 of 5)
+ (Run on a file system with a direct address used more than once)
+ ./fcheck gave incorrect standard error.
+
+ Test it yourself by running
+ fcheck /cs4348-xv6/ta/all_tests/p5/images/addronce
+ and check out the test folder
+ /cs4348-xv6/ta/all_tests/p5/err/addronce
+ to compare your error output with reference outputs. 
+
+test addronce2 FAILED (0 of 5)
+ (Run on a file system with an indirect address used more than once)
+ ./fcheck gave incorrect standard error.
+
+ Test it yourself by running
+ fcheck /cs4348-xv6/ta/all_tests/p5/images/addronce2
+ and check out the test folder
+ /cs4348-xv6/ta/all_tests/p5/err/addronce2
+ to compare your error output with reference outputs. 
+
+test imrkused FAILED (0 of 5)
+ (Run on a file system with inode marked used, but not referenced in a directory)
+ ./fcheck gave incorrect standard error.
+
+ Test it yourself by running
+ fcheck /cs4348-xv6/ta/all_tests/p5/images/imrkused
+ and check out the test folder
+ /cs4348-xv6/ta/all_tests/p5/err/imrkused
+ to compare your error output with reference outputs. 
+
+test imrkfree FAILED (0 of 5)
+ (Run on a file system with inode marked free, but referenced in a directory)
+ ./fcheck gave incorrect standard error.
+
+ Test it yourself by running
+ fcheck /cs4348-xv6/ta/all_tests/p5/images/imrkfree
+ and check out the test folder
+ /cs4348-xv6/ta/all_tests/p5/err/imrkfree
+ to compare your error output with reference outputs. 
+
+test badrefcnt FAILED (0 of 5)
+ (Run on a file system which has an inode that is referenced less than its reference count)
+ ./fcheck gave incorrect standard error.
+
+ Test it yourself by running
+ fcheck /cs4348-xv6/ta/all_tests/p5/images/badrefcnt
+ and check out the test folder
+ /cs4348-xv6/ta/all_tests/p5/err/badrefcnt
+ to compare your error output with reference outputs. 
+
+test badrefcnt2 FAILED (0 of 5)
+ (Run on a file system which has an inode that is referenced more than its reference count)
+ ./fcheck gave incorrect standard error.
+
+ Test it yourself by running
+ fcheck /cs4348-xv6/ta/all_tests/p5/images/badrefcnt2
+ and check out the test folder
+ /cs4348-xv6/ta/all_tests/p5/err/badrefcnt2
+ to compare your error output with reference outputs. 
+
+test badindir2 FAILED (0 of 5)
+ (Run on a file system with a bad indirect address in an inode)
+ ./fcheck gave incorrect standard error.
+
+ Test it yourself by running
+ fcheck /cs4348-xv6/ta/all_tests/p5/images/badindir2
+ and check out the test folder
+ /cs4348-xv6/ta/all_tests/p5/err/badindir2
+ to compare your error output with reference outputs. 
+
+test dironce FAILED (0 of 5)
+ (Run on a file system with a directory appearing more than once)
+ ./fcheck gave incorrect standard error.
+
+ Test it yourself by running
+ fcheck /cs4348-xv6/ta/all_tests/p5/images/dironce
+ and check out the test folder
+ /cs4348-xv6/ta/all_tests/p5/err/dironce
+ to compare your error output with reference outputs. 
+
+test badlarge FAILED (0 of 5)
+ (Run on a large file system with an indirect directory appearing more than once)
+ ./fcheck gave incorrect standard error.
+
+ Test it yourself by running
+ fcheck /cs4348-xv6/ta/all_tests/p5/images/badlarge
+ and check out the test folder
+ /cs4348-xv6/ta/all_tests/p5/err/badlarge
+ to compare your error output with reference outputs. 
+
+Passed 6 of 25 tests.
+Overall 6 of 25
+Points 25 of 120

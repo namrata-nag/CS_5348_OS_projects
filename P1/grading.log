@@ -1,0 +1,53 @@
+
+========== Summary ==========
+Total test case score: 78.0
+You got: 71.0
+
+========== Details ==========
+Test 3 failed: Test 3 - ls with a bad directory name: BadCD should get stderr: ls: cannot access /u/c/s/cs537-1/tests/tests-wish/bad_ls/bad: No such file or directory
+. Got: /bin/ls: cannot access /u/c/s/cs537-1/tests/tests-wish/bad_ls/bad: No such file or directory
+. -1.0
+Test 13 failed: Test 13 - invoke batch mode twice: should get return code: 1. Got 0. -1.0
+Test 14 failed: Test 14 - invoke a bad batch file: should get return code: 1. Got 0. -1.0
+Test 17 failed: Test 17 - run parallel commands with & at the end: should get test1
+test2
+test3
+test4
+/cs4348-xv6/src/test
+. Got /cs4348-xv6/src/test
+test1
+test2
+test3
+test4
+. -1.0
+Test 18 failed: Test 18 - run nromal parallel commands: should get test1
+test2
+test3
+test4
+/cs4348-xv6/src/test
+Linux
+. Got /cs4348-xv6/src/test
+Linux
+test1
+test2
+test3
+test4
+. -1.0
+Test 19 failed: Test 19 - run parallel commands with no space before and: should get test1
+test2
+test3
+test4
+/cs4348-xv6/src/test
+Linux
+. Got /cs4348-xv6/src/test
+Linux
+test1
+test2
+test3
+test4
+. -1.0
+Test 24 failed: Test 24 - run commands in the interactive mode: should get dash> /cs5348-xv6/nxn230019/P1
+dash> Linux
+. Got /cs5348-xv6/nxn230019/P1
+Linux
+dash> dash> dash> dash> . -1.0
